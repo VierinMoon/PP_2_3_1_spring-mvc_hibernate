@@ -6,24 +6,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-
-import java.util.List;
+import web.service.UserService;
 
 @Controller
 @RequestMapping("/users")
-public class CarsController {
+public class UserController {
 
     private UserService userService;
 
     @Autowired
-    public CarsController(CarService carService) {
-        this.carService = carService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping()
-    public String getCars(@RequestParam(value = "count", defaultValue = "5") int count,  Model model) {
-        model.addAttribute("cars", carService.getCars(count));
-        return "cars";
+    @GetMapping
+    public String getUsers(@RequestParam(value = "count", defaultValue = "5") int count,  Model model) {
+        model.addAttribute("users", userService.getAllUsers(count));
+        return "users";
     }
 }

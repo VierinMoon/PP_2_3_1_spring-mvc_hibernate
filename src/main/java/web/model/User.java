@@ -24,8 +24,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surmane, Integer age) {
-        this.id = id;
+    public User(String name, String surmane, Integer age) {
         this.name = name;
         this.surmane = surmane;
         this.age = age;
