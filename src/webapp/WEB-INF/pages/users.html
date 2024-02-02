@@ -14,18 +14,26 @@
             <th>surname</th>
             <th>age</th>
         </tr>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.getId()}" target="_blank">Id</td>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
             <td>
-                <a th:href="@{users/{id}(id=${user.getId()})}" th:text="${user.getName()}" target="_blank" />
+                <form th:action="@{users/update}" th:method="GET">
+                    <button type="submit" name="id" th:value="${user.id}">Update</button>
+                </form>
+                <form th:action="@{users/delete}" th:method="POST">
+                    <button type="submit" name="id" th:value="${user.id}">Delete</button>
+                </form>
             </td>
-            <td th:text="${user.getSurname()}">val</td>
-            <td th:text="${user.getAge()}">val</td>
         </tr>
     </table>
 </div>
 <br/>
 <br/>
-<a href="/users/new">Create new user!</a>
+<form th:action="@{users/new}" th:method="GET">
+    <button type="submit">Creat new user!</button>
+</form>
 </body>
 </html>

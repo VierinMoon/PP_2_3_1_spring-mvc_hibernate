@@ -6,16 +6,16 @@
 </head>
 <body>
 
-<h1 th:text="'Hi, ' + ${user.getName()} + ' ' + ${user.getSurname()} + '!'">val</h1>
+<h1 th:text="'Hi, ' + ${user.name} + ' ' + ${user.getSurname()} + '!'">val</h1>
 <h3 th:text="'Your age: ' + ${user.getAge()}">val</h3>
 
-<a th:href="@{{id}/update(id=${user.getId()})}">Update data</a>
+<a th:href="@{users/update}">Update data</a>
 <br/>
 <a href="/users">Go back to main page</a>\
 <br/>
 <br/>
-<form th:method="DELETE"
-      th:action="@{/users/{id}(id=${user.getId()})}">
+<form th:method="POST"
+      th:action="@{/users/update}">
     <input type="submit" value="Delete"/>
 </form>
 </body>

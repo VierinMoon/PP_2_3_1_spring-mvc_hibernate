@@ -2,6 +2,7 @@
 *.xml
 *.jar
 *.class
-*.html
 *.properties
 *.MF
+*.meta
+*/target/*

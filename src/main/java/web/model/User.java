@@ -16,7 +16,7 @@ public class User {
     private String name;
 
     @Column(name="surname")
-    private String surmane;
+    private String surname;
 
     @Column(name="age")
     private Integer age;
@@ -26,7 +26,7 @@ public class User {
 
     public User(String name, String surmane, Integer age) {
         this.name = name;
-        this.surmane = surmane;
+        this.surname = surmane;
         this.age = age;
     }
 
@@ -46,12 +46,12 @@ public class User {
         this.name = name;
     }
 
-    public String getSurmane() {
-        return surmane;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurmane(String surmane) {
-        this.surmane = surmane;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Integer getAge() {
@@ -67,12 +67,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surmane, user.surmane) && Objects.equals(age, user.age);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(age, user.age);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surmane, age);
+        return Objects.hash(id, name, surname, age);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", surmane='" + surmane + '\'' +
+                ", surmane='" + surname + '\'' +
                 ", age=" + age +
                 '}';
     }

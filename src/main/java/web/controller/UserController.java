@@ -20,15 +20,9 @@ public class UserController {
 
 
     @GetMapping
-    public String getUsers(@RequestParam(value = "count", defaultValue = "5") int count,  Model model) {
-        model.addAttribute("users", userService.getAllUsers(count));
+    public String getUsers(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
         return "users";
-    }
-
-    @GetMapping("/{id}")
-    public String getUserById(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
-        return "user";
     }
 
     @GetMapping("/new")
@@ -42,20 +36,20 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/{id}/update")
-    public String editUser(Model model, @PathVariable("id") Long id) {
+    @GetMapping("/update")
+    public String editUser(Model model, @RequestParam("id") Long id) {
         model.addAttribute("user", userService.getUserById(id));
         return "update";
     }
 
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        userService.updateUser(id, user);
+    @PostMapping("/updateUser")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.updateUser(user);
         return  "redirect:/users";
     }
 
-    @DeleteMapping("/{id}")
-    public String removeUser(@PathVariable("id") Long id) {
+    @PostMapping("/delete")
+    public String removeUser(@RequestParam("id") Long id) {
         userService.removeUserById(id);
         return "redirect:/users";
     }
