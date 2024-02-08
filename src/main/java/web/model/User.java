@@ -1,5 +1,7 @@
 package web.model;
 
+import javax.validation.constraints.*;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -13,12 +15,17 @@ public class User {
     private Long id;
 
     @Column(name="name")
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String name;
 
     @Column(name="surname")
+    @NotEmpty(message = "Surname should not be empty")
+    @Size(min = 2, max = 30, message = "Surname should be between 2 and 30 characters")
     private String surname;
 
     @Column(name="age")
+    @Min(value = 0, message = "Age should be greater than 0")
     private Integer age;
 
     public User() {
